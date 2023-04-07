@@ -48,10 +48,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: apple2 tests not available for" $(SYS)
+	echo "info: apple2 tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 disk: hgr.dsk dhgr.dsk
@@ -88,7 +88,7 @@ dhgrshow: dhgrshow.c
 	$(CL) -Oirs -t apple2enh --start-addr 0x4000 -m dhgrshow.map $^
 
 clean:
-	@$(DEL) hgr.dsk dhgr.dsk 2>$(NULLDEV)
-	@$(DEL) hgrshow hgrshow.map 2>$(NULLDEV)
-	@$(DEL) hgrtest hgrtest.map 2>$(NULLDEV)
-	@$(DEL) dhgrshow dhgrshow.map 2>$(NULLDEV)
+	$(DEL) hgr.dsk dhgr.dsk 2>$(NULLDEV)
+	$(DEL) hgrshow hgrshow.map 2>$(NULLDEV)
+	$(DEL) hgrtest hgrtest.map 2>$(NULLDEV)
+	$(DEL) dhgrshow dhgrshow.map 2>$(NULLDEV)

@@ -58,22 +58,22 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: pce tests not available for" $(SYS)
+	echo "info: pce tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'testcode' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 %.bin: %.c
 	$(CL) -t pce $< -Wl -D__CARTSIZE__=${CARTSIZE} -m $*.map -o $@
-	@echo "use 'make conio.pce' to produce a .pce file using dd"
+	echo "use 'make conio.pce' to produce a .pce file using dd"
 
 %.pce: %.bin
 	dd if=$< bs=8K skip=${COUNT} > $@
 	dd if=$< bs=8K count=${COUNT} >> $@
 
 clean:
-	@$(DEL) conio.o 2>$(NULLDEV)
-	@$(DEL) conio.pce 2>$(NULLDEV)
-	@$(DEL) conio.bin 2>$(NULLDEV)
-	@$(DEL) conio.map 2>$(NULLDEV)
+	$(DEL) conio.o 2>$(NULLDEV)
+	$(DEL) conio.pce 2>$(NULLDEV)
+	$(DEL) conio.bin 2>$(NULLDEV)
+	$(DEL) conio.map 2>$(NULLDEV)

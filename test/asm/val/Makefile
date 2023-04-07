@@ -55,4 +55,4 @@ $(eval $(call PRG_template,6502))
 $(eval $(call PRG_template,65c02))
 
 clean:
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

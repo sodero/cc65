@@ -43,10 +43,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: sym1 tests not available for" $(SYS)
+	echo "info: sym1 tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 symHello.bin: symHello.c
@@ -69,9 +69,9 @@ symExtendedMemory.bin: symExtendedMemory.c
 
 
 clean:
-	@$(DEL) symHello.bin 2>$(NULLDEV)
-	@$(DEL) symTiny.bin 2>$(NULLDEV)
-	@$(DEL) symDisplay.bin 2>$(NULLDEV)
-	@$(DEL) symIO.bin 2>$(NULLDEV)
-	@$(DEL) symNotepad.bin 2>$(NULLDEV)
-	@$(DEL) symExtendedMemory.bin 2>$(NULLDEV)
+	$(DEL) symHello.bin 2>$(NULLDEV)
+	$(DEL) symTiny.bin 2>$(NULLDEV)
+	$(DEL) symDisplay.bin 2>$(NULLDEV)
+	$(DEL) symIO.bin 2>$(NULLDEV)
+	$(DEL) symNotepad.bin 2>$(NULLDEV)
+	$(DEL) symExtendedMemory.bin 2>$(NULLDEV)

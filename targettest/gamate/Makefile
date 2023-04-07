@@ -43,10 +43,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: gamate tests not available for" $(SYS)
+	echo "info: gamate tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'testcode' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 audiotest.bin: audiotest.s
@@ -57,6 +57,6 @@ ctest.bin: ctest.c
 	$(CL) -l ctest.lst -t gamate -o ctest.bin ctest.c
 
 clean:
-	@$(DEL) lcdtest.o audiotest.o ctest.o 2>$(NULLDEV)
-	@$(DEL) lcdtest.bin audiotest.bin ctest.bin nachtm.bin 2>$(NULLDEV)
-	@$(DEL) audiotest.lst lcdtest.lst ctest.lst 2>$(NULLDEV)
+	$(DEL) lcdtest.o audiotest.o ctest.o 2>$(NULLDEV)
+	$(DEL) lcdtest.bin audiotest.bin ctest.bin nachtm.bin 2>$(NULLDEV)
+	$(DEL) audiotest.lst lcdtest.lst ctest.lst 2>$(NULLDEV)

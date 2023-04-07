@@ -42,10 +42,10 @@ else
 samples:
 # recipe used to skip systems that will not work with any program in this dir
 ifeq ($(MAKELEVEL),0)
-	@echo "info: Lynx tests not available for" $(SYS)
+	echo "info: Lynx tests not available for" $(SYS)
 else
 # Suppress the "nothing to be done for 'samples' message.
-	@echo "" > $(NULLDEV)
+	echo "" > $(NULLDEV)
 endif
 endif
 
@@ -56,4 +56,4 @@ endif
 	$(CL) -t $(SYS) -Oris -m $*.map -o $@ $<
 
 clean:
-	@$(DEL) *.o *.map *.lnx 2>$(NULLDEV)
+	$(DEL) *.o *.map *.lnx 2>$(NULLDEV)

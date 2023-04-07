@@ -713,7 +713,7 @@ endif
 
 define SUBDIR_recipe
 
-@+$(MAKE) -C $(dir) --no-print-directory $@
+$(MAKE) -C $(dir) --no-print-directory $@
 
 endef # SUBDIR_recipe
 
@@ -726,7 +726,7 @@ testcode: $(EXELIST_$(SYS))
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: generic targettest programs not available for" $(SYS)
+	echo "info: generic targettest programs not available for" $(SYS)
 endif
 
 disk: $(DISK_$(SYS))
@@ -773,9 +773,9 @@ TARGETS :=     \
 
 define TARGET_recipe
 
-@echo making targettest for: $(T)
-@$(MAKE) -j2 SYS:=$(T)
-@$(MAKE) --no-print-directory clean SYS:=$(T)
+echo making targettest for: $(T)
+$(MAKE) -j2 SYS:=$(T)
+$(MAKE) --no-print-directory clean SYS:=$(T)
 
 endef # TARGET_recipe
 
@@ -817,12 +817,12 @@ $(C1541) -attach $@ -write "$(subst ?,$(SPACE),$(file))" $(notdir $(file)),s >$(
 endef # D64_WRITE_SEQ_recipe
 
 testcode.d64: testcode
-	@$(C1541) -format testcode,AA d64 $@ >$(NULLDEV)
+	$(C1541) -format testcode,AA d64 $@ >$(NULLDEV)
 	$(foreach file,$(EXELIST_$(SYS)),$(D64_WRITE_PRG_recipe))
 #	$(foreach file,$(EMD) $(MOU) $(TGI),$(D64_WRITE_SEQ_recipe))
 
 testcode.d81: testcode
-	@$(C1541) -format testcode,AA d81 $@ >$(NULLDEV)
+	$(C1541) -format testcode,AA d81 $@ >$(NULLDEV)
 	$(foreach file,$(EXELIST_$(SYS)),$(D64_WRITE_PRG_recipe))
 	$(foreach file,$(EMD) $(MOU) $(TGI),$(D64_WRITE_SEQ_recipe))
 
@@ -862,22 +862,22 @@ cp "$(subst ?,$(SPACE),$(file))" atr/$(notdir $(file))
 endef # ATR_WRITE_recipe
 
 testcode.atr: testcode
-	@mkdir atr
+	mkdir atr
 	cp "dos.sys" atr/dos.sys
 	cp "dup.sys" atr/dup.sys
-	@$(foreach file,$(EXELIST_$(SYS)),$(ATR_WRITE_recipe))
+	$(foreach file,$(EXELIST_$(SYS)),$(ATR_WRITE_recipe))
 #	@$(foreach file,$(EMD) $(MOU) $(TGI),$(ATR_WRITE_recipe))
 	$(DIR2ATR) -d -b MyDos4534 3200 $@ atr
-	@$(RMDIR) atr
+	$(RMDIR) atr
 
 # --------------------------------------------------------------------------
 # Clean-up rules
 
 mostlyclean:
-	@$(DEL) *.lbl *.map *.o 2>$(NULLDEV)
+	$(DEL) *.lbl *.map *.o 2>$(NULLDEV)
 # we cant use .s since we have asm files in the directory that we want to keep
-	@$(DEL) ${patsubst %.c,%.s,$(wildcard *.c)} 2>$(NULLDEV)
+	$(DEL) ${patsubst %.c,%.s,$(wildcard *.c)} 2>$(NULLDEV)
 
 clean: mostlyclean
-	@$(DEL) $(EXELIST_$(SYS)) $(DISK_$(SYS)) 2>$(NULLDEV)
+	$(DEL) $(EXELIST_$(SYS)) $(DISK_$(SYS)) 2>$(NULLDEV)
 	$(foreach dir,$(DIRLIST),$(SUBDIR_recipe))

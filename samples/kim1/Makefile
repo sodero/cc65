@@ -44,10 +44,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: kim1 tests not available for" $(SYS)
+	echo "info: kim1 tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 kimSieve.bin: kimSieve.c
@@ -57,6 +57,6 @@ kimHello.bin: kimHello.c
 	$(CL) -t kim1 -O -o kimHello.bin kimHello.c
 
 clean:
-	@$(DEL) kimSieve.bin 2>$(NULLDEV)
-	@$(DEL) kimHello.bin 2>$(NULLDEV)
+	$(DEL) kimSieve.bin 2>$(NULLDEV)
+	$(DEL) kimHello.bin 2>$(NULLDEV)
 

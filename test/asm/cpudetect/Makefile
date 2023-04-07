@@ -58,4 +58,4 @@ $(WORKDIR)/%.o: %.s | $(WORKDIR)
 	$(CA65) -l $(@:.o=.lst) -o $@ $<
 
 clean:
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

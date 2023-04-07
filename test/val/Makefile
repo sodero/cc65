@@ -61,4 +61,4 @@ $(foreach option,$(OPTIONS),$(eval $(call PRG_template,$(option),6502)))
 $(foreach option,$(OPTIONS),$(eval $(call PRG_template,$(option),65c02)))
 
 clean:
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

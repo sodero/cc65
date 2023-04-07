@@ -43,10 +43,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: gamate tests not available for" $(SYS)
+	echo "info: gamate tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 nachtm.bin: nachtm.c
@@ -54,4 +54,4 @@ nachtm.bin: nachtm.c
 	../../util/gamate/gamate-fixcart nachtm.bin
 
 clean:
-	@$(DEL) nachtm.bin nachtm.lst 2>$(NULLDEV)
+	$(DEL) nachtm.bin nachtm.lst 2>$(NULLDEV)

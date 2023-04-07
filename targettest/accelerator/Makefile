@@ -51,10 +51,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: accelerator tests not available for" $(SYS)
+	echo "info: accelerator tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'testcode' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 c64-scpu-test.prg: c64-c128-scpu-test.c
@@ -82,4 +82,4 @@ turbomaster-test.prg: turbomaster-test.c
 	$(CL) -t c64 turbomaster-test.c -o turbomaster-test.prg
 
 clean:
-	@$(DEL) *.prg 2>$(NULLDEV)
+	$(DEL) *.prg 2>$(NULLDEV)

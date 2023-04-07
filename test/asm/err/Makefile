@@ -42,4 +42,4 @@ $(WORKDIR)/%.prg: %.s | $(WORKDIR)
 	$(NOT) $(CA65) -o $@ $< $(NULLERR)
 
 clean:
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

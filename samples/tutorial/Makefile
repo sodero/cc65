@@ -85,11 +85,11 @@ hello: hello.c text.s
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: tutorial sample not available for" $(SYS)
+	echo "info: tutorial sample not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 clean:
-	@$(DEL) hello 2>$(NULLDEV)
+	$(DEL) hello 2>$(NULLDEV)

@@ -21,14 +21,14 @@ all: mostlyclean continue
 define CALL_template
 
 continue::
-	@$(MAKE) -C $1 all
+	$(MAKE) -C $1 all
 
 mostlyclean::
-	@$(MAKE) -C $1 clean
+	$(MAKE) -C $1 clean
 
 endef
 
 $(foreach subdir,$(SUBDIRS),$(eval $(call CALL_template,$(subdir))))
 
 clean: mostlyclean
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

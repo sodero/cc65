@@ -127,8 +127,8 @@ unavail:
 endif # CMD_EXE
 
 zip:
-	@cd .. && zip cc65 bin/*
-	@echo 'https://github.com/cc65/cc65/commits/'$(word 2,$(BUILD_ID))|zip -zq ../cc65
+	cd .. && zip cc65 bin/*
+	echo 'https://github.com/cc65/cc65/commits/'$(word 2,$(BUILD_ID))|zip -zq ../cc65
 
 define OBJS_template
 
@@ -137,7 +137,7 @@ $1_OBJS := $$(patsubst %.c,../wrk/%.o,$$(wildcard $1/*.c))
 $$($1_OBJS): | ../wrk/$1
 
 ../wrk/$1:
-	@$$(call MKDIR,$$@)
+	$$(call MKDIR,$$@)
 
 DEPS += $$($1_OBJS:.o=.d)
 
@@ -155,11 +155,11 @@ $1: ../bin/$1$(EXE_SUFFIX)
 endef # PROG_template
 
 ../wrk/%.o: %.c
-	@echo $<
-	$(Q)$(CC) -c $(CFLAGS) -o $@ $<
+	echo $<
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 ../bin:
-	@$(call MKDIR,$@)
+	$(call MKDIR,$@)
 
 $(eval $(call OBJS_template,common))
 

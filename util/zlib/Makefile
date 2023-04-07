@@ -24,9 +24,9 @@ zlib:
 #zlib: deflater
 
 warning:
-	@echo "util/zlib/deflater is no longer built by default"
-	@echo "use 'make deflater' to build if you need it"
-	@echo "note that you need zlib installed first"
+	echo "util/zlib/deflater is no longer built by default"
+	echo "use 'make deflater' to build if you need it"
+	echo "note that you need zlib installed first"
 
 deflater: deflater.c
 	$(CC) $(CFLAGS) -o deflater deflater.c -lz

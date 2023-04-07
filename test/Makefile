@@ -17,22 +17,22 @@ WORKDIR = ../testwrk
 test: mostlyclean continue
 
 continue:
-	@$(MAKE) -C asm all
-	@$(MAKE) -C dasm all
-	@$(MAKE) -C val all
-	@$(MAKE) -C ref all
-	@$(MAKE) -C err all
-	@$(MAKE) -C misc all
-	@$(MAKE) -C todo all
+	$(MAKE) -C asm all
+	$(MAKE) -C dasm all
+	$(MAKE) -C val all
+	$(MAKE) -C ref all
+	$(MAKE) -C err all
+	$(MAKE) -C misc all
+	$(MAKE) -C todo all
 
 mostlyclean:
-	@$(MAKE) -C asm clean
-	@$(MAKE) -C dasm clean
-	@$(MAKE) -C val clean
-	@$(MAKE) -C ref clean
-	@$(MAKE) -C err clean
-	@$(MAKE) -C misc clean
-	@$(MAKE) -C todo clean
+	$(MAKE) -C asm clean
+	$(MAKE) -C dasm clean
+	$(MAKE) -C val clean
+	$(MAKE) -C ref clean
+	$(MAKE) -C err clean
+	$(MAKE) -C misc clean
+	$(MAKE) -C todo clean
 
 clean: mostlyclean
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

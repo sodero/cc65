@@ -59,10 +59,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: cbm tests not available for" $(SYS)
+	echo "info: cbm tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'testcode' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 ifeq ($(SYS),c64)
@@ -105,12 +105,12 @@ endef # D64_WRITE_SEQ_recipe
 disk: $(DISK_$(SYS))
 
 testcode.d64: testcode
-	@$(C1541) -format "testcode,00" d64 $@ >$(NULLDEV)
+	$(C1541) -format "testcode,00" d64 $@ >$(NULLDEV)
 	$(foreach file,$(EXELIST_$(SYS)),$(D64_WRITE_PRG_recipe))
 	$(foreach file,$(EXTRALIST_$(SYS)),$(D64_WRITE_SEQ_recipe))
 #	$(foreach file,$(EMD) $(MOU) $(TGI),$(D64_WRITE_SEQ_recipe))
 
 clean:
-	@$(DEL) *.lbl petscii.prg cbmdir-test.prg 2>$(NULLDEV)
-	@$(DEL) $(DISK_c64)
-	@$(DEL) $(DISK_vic20)
+	$(DEL) *.lbl petscii.prg cbmdir-test.prg 2>$(NULLDEV)
+	$(DEL) $(DISK_c64)
+	$(DEL) $(DISK_vic20)

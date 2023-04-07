@@ -43,14 +43,14 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: atari 5200 tests not available for" $(SYS)
+	echo "info: atari 5200 tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 hello: hello.c
 	$(CL) -t atari5200 -o hello hello.c
 	
 clean:
-	@$(DEL) hello 2>$(NULLDEV)
+	$(DEL) hello 2>$(NULLDEV)

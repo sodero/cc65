@@ -50,7 +50,7 @@ DIRLIST = grc
 
 define SUBDIR_recipe
 
-@+$(MAKE) SYS=$(SYS) -C $(dir) --no-print-directory $@
+$(MAKE) SYS=$(SYS) -C $(dir) --no-print-directory $@
 
 endef # SUBDIR_recipe
 
@@ -91,10 +91,10 @@ samples-geos: $(EXELIST_$(SYS))
 else
 samples:
   ifeq ($(MAKELEVEL),0)
-	@echo "info: geos samples not available for" $(SYS)
+	echo "info: geos samples not available for" $(SYS)
   else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
   endif
 endif
 
@@ -136,8 +136,8 @@ yesno.cvt: yesnores.grc yesno.c
 
 	
 clean:
-	@$(DEL) overlay-demores.h 2>$(NULLDEV)
-	@$(DEL) bitmap.c 2>$(NULLDEV)
-	@$(DEL) *.cvt 2>$(NULLDEV)
-	@$(DEL) *.map 2>$(NULLDEV)
+	$(DEL) overlay-demores.h 2>$(NULLDEV)
+	$(DEL) bitmap.c 2>$(NULLDEV)
+	$(DEL) *.cvt 2>$(NULLDEV)
+	$(DEL) *.map 2>$(NULLDEV)
 	$(foreach dir,$(DIRLIST),$(SUBDIR_recipe))

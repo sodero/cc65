@@ -1,0 +1,7 @@
+Building on AmigaOS 4
+
+1. Set cc65 root using 'SetEnv CC65_HOME=/UNIX/PATH/SEMANTICS'.
+   E.g 'SetEnv CC65_HOME=/Work/MySources/cc65'.
+
+2. Using abc-shell, invoke 'make USER_CFLAGS=-D_AMIGA SHELL=sh BUILD_ID="0" LDLIBS=-lunix'
+   in CC65_HOME.

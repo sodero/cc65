@@ -123,10 +123,10 @@ disk: $(DISK_$(SYS))
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: cbm samples not available for" $(SYS)
+	echo "info: cbm samples not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 fire: fire.c
@@ -153,12 +153,12 @@ $(C1541) -attach $@ -write "$(subst ?,$(SPACE),$(file))" $(notdir $(file)),s >$(
 endef # D64_WRITE_SEQ_recipe
 
 samples.d64: samples
-	@$(C1541) -format "samples,00" d64 $@ >$(NULLDEV)
+	$(C1541) -format "samples,00" d64 $@ >$(NULLDEV)
 	$(foreach file,$(EXELIST_$(SYS)),$(D64_WRITE_PRG_recipe))
 #	$(foreach file,$(OVERLAYLIST),$(D64_WRITE_PRG_recipe))
 #	$(foreach file,$(EMD) $(MOU) $(TGI),$(D64_WRITE_SEQ_recipe))
 
 clean:
-	@$(DEL) $(EXELIST_$(SYS)) 2>$(NULLDEV)
-	@$(DEL) *.map 2>$(NULLDEV)
-	@$(DEL) $(DISK_$(SYS)) 2>$(NULLDEV)
+	$(DEL) $(EXELIST_$(SYS)) 2>$(NULLDEV)
+	$(DEL) *.map 2>$(NULLDEV)
+	$(DEL) $(DISK_$(SYS)) 2>$(NULLDEV)

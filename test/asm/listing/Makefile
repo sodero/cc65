@@ -94,7 +94,7 @@ endif
 #	rem $(indfo $(CAT) $(subst /,$$S,$$$(@:.bin=.ld65-err)))
 
 ifneq ($(wildcard ref/$1.ld65err-ref),)
-	@echo $(CAT) $$(@:.bin=.ld65-err)
+	echo $(CAT) $$(@:.bin=.ld65-err)
 # FIXME: somehow this refuses to work in cmd.exe
 ifndef CMD_EXE
 	$(call CAT,$$(@:.bin=.ld65-err))
@@ -108,7 +108,7 @@ endif
 endif
 
 ifneq ($(wildcard ref/$1.ld65err2-ref),)
-	@echo $(CAT) $$(@:.bin=.ld65-err2)
+	echo $(CAT) $$(@:.bin=.ld65-err2)
 # FIXME: somehow this refuses to work in cmd.exe
 ifndef CMD_EXE
 	$(call CAT,$$(@:.bin=.ld65-err2))
@@ -194,4 +194,4 @@ $(WORKDIR)/%.o: %.s | $(WORKDIR)
 	$(CA65) -l $(@:.o=.lst) -o $@ $<
 
 clean:
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

@@ -51,10 +51,10 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: atari tests not available for" $(SYS)
+	echo "info: atari tests not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'testcode' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 charmapping.xex: charmapping.c
@@ -78,13 +78,13 @@ sys.xex: sys.c
 sound.xex: sound.c
 	$(CL) -t atari -o sound.xex sound.c
 clean:
-	@$(DEL) charmapping.xex 2>$(NULLDEV)
-	@$(DEL) defdev.xex 2>$(NULLDEV)
-	@$(DEL) displaylist.xex 2>$(NULLDEV)
-	@$(DEL) mem.xex 2>$(NULLDEV)
-	@$(DEL) multi.xex 2>$(NULLDEV)
-	@$(DEL) ostype.xex 2>$(NULLDEV)
-	@$(DEL) scrcode.o 2>$(NULLDEV)
-	@$(DEL) scrcode.com 2>$(NULLDEV)
-	@$(DEL) sys.xex 2>$(NULLDEV)
-	@$(DEL) sound.xex 2>$(NULLDEV)
+	$(DEL) charmapping.xex 2>$(NULLDEV)
+	$(DEL) defdev.xex 2>$(NULLDEV)
+	$(DEL) displaylist.xex 2>$(NULLDEV)
+	$(DEL) mem.xex 2>$(NULLDEV)
+	$(DEL) multi.xex 2>$(NULLDEV)
+	$(DEL) ostype.xex 2>$(NULLDEV)
+	$(DEL) scrcode.o 2>$(NULLDEV)
+	$(DEL) scrcode.com 2>$(NULLDEV)
+	$(DEL) sys.xex 2>$(NULLDEV)
+	$(DEL) sound.xex 2>$(NULLDEV)

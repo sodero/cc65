@@ -77,4 +77,4 @@ $(WORKDIR)/65816-reass.bin: $(WORKDIR)/65816-reass.s $(ISEQUAL)
 	$(ISEQUAL) --binary $(WORKDIR)/test65816.bin $@
 
 clean:
-	@$(call RMDIR,$(WORKDIR))
+	$(call RMDIR,$(WORKDIR))

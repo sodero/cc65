@@ -45,15 +45,15 @@ endif
 # empty target used to skip systems that will not work with any program in this dir
 notavailable:
 ifeq ($(MAKELEVEL),0)
-	@echo "info: atari 2600 samples not available for" $(SYS)
+	echo "info: atari 2600 samples not available for" $(SYS)
 else
 # suppress the "nothing to be done for 'samples' message
-	@echo > $(NULLDEV)
+	echo > $(NULLDEV)
 endif
 
 hello: hello.c
 	$(CL) -t $(SYS) -O -o hello -m hello.map hello.c
 	
 clean:
-	@$(DEL) $(EXELIST_atari2600) 2>$(NULLDEV)
-	@$(DEL) *.map 2>$(NULLDEV)
+	$(DEL) $(EXELIST_atari2600) 2>$(NULLDEV)
+	$(DEL) *.map 2>$(NULLDEV)
